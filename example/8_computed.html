@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="https://unpkg.com/vue@2.6.12"></script>
+</head>
+<body>
+    <!-- computed 有緩存特性，在他依賴的值發生改變時才會重新求值 -->
+
+    <div id="app"> <!--HTML DOM template-->
+        <!-- //computed 只會在其依賴的資料 改變 的時候 重新計算求值 -->
+        <p>computed : {{now_C}}</p>
+
+        <!-- //method 則是一旦觸發重新渲染便會重新執行函式。 -->
+        <p>methods : {{now_M()}}</p>
+        <p>
+            Weight: <input v-model="weight">
+        </p>
+        <p>
+            Height: <input v-model="height">
+        </p>
+
+        <!-- computed方法，不可傳參數，要有回傳值 -->
+        <p>
+            Your BMI is <span>{{calculate}}</span>
+        </p>
+
+        <!-- methods方法，可傳參數，不一定要有回傳值 -->
+        <p>{{Met1("你好")}}</p>
+        <p>{{Met2()}}</p>
+        
+    </div>
+
+    <script>
+        // BMI -> 體重(公斤) / (身高 / 100)的平方
+       const vm =  new Vue({
+            el: '#app',
+            data: {  //變數放這裡!
+                message: 'Hello',
+                weight: 0,
+                height: 0,
+                // BMI: 0,
+            },
+            methods: { //函數大部分放這裡!
+                Met1(msg){
+                    return msg;
+                },
+                Met2(){
+                    console.log(this); //指向vue實體
+                    console.log(this.message); //data的值要加this才抓的到
+                },
+                Met3(){
+                    console.log("Met3 -- js 直接使用vue的方法");
+                },
+                now_M(){
+                    return new Date();
+                }
+            },
+            watch:{
+
+            },
+            computed: {//函數也可以放這裡，但是放這裡的函數，不可以傳參數，一定要有傳回值。
+                calculate(){
+                    if(this.weight > 0 && this.height > 0){
+                        // console.log(this.message);
+                        // console.log(this.$el);
+                        // console.log(this.$data.weight);
+                        return this.weight / Math.pow(this.height / 100, 2);
+                    }else{
+                        return 0;
+                    }
+                },
+                now_C(){
+                    //為了讓這兩個值變動時就呼叫此方法變更時間，只要這兩個有變就會呼叫
+                    // let temp = this.weight + this.height;
+                    return new Date();
+                },
+            },
+        });
+
+
+        // js中直接取用vue內的data
+        alert(vm.$data.message);
+        // js中直接取用vue內的method
+        vm.Met3();
+
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="https://unpkg.com/vue@2.6.12"></script>
+</head>
+<body>
+    <!-- v-if
+        1. 在表達式為true時渲染，dom不會一直存在 
+        2. 可使用<template>，<template>節點不會出現
+        3. 是真正的條件渲染:切換過程中，條件區塊內的事件監聽和子組件會被銷毀和重建
+        4. 切換開銷較大，適合運行條件很少改變時-->
+        
+    <div id="app">
+        <h1>What did you get in JAVA?</h1>
+        Your score: <input v-model="score">
+
+        <p v-if="score>=70">PASS!</p>
+        <p v-else>It's hard to pass.</p>
+
+
+        <!-- 使用<template> 包裹元素-->
+        <template  v-if="score>=70">
+          <h1 style="color: brown;">恭喜通過!</h1>
+          <p>你是第oo個通過的人</p>
+        </template>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',  //el: document.getElementById('app'),
+            data: {  //變數放這裡!
+                score: 0,
+                loading: false,
+            },
+        });
+    </script>
+</body>
+</html>
+

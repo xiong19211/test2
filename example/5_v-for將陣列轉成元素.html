@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="https://unpkg.com/vue@2.6.12"></script>
+</head>
+<body>
+    <div id="app"> <!--HTML DOM template-->
+        <!-- 單個參數 -->
+        <select name="年">
+            <option v-for="year in years">{{year}}</option>
+        </select>
+
+        <!--index -->
+        <select name="月份">
+            <!-- <option v-for="month in months">{{month}}</option> -->
+            <!-- <option v-for="month in 12">{{month}}</option> -->
+            <option v-for="(month,index) in 12">{{month}}月 -- INDEX {{index}}</option>
+        </select>
+
+        <hr>
+        <!-- 兩個參數  -->
+        //物件----------------------------------------------
+        <li v-for="(value, key,index) in friends_Object">
+            {{ key }}:{{ value }} :  index --{{index}}
+        </li>
+        
+        //陣列----------------------------------------------
+        <li v-for="(value,index) in friends_Array">
+            {{ index }}: {{ value }}
+            <ol> name : {{value.name}}</ol>
+            <ol> age : {{value.age}}</ol>
+        </li>
+
+
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {  //變數放這裡!
+                // colors: ['red','orange','yellow','green','blue','indigo','violet'],
+                friends_Object: {
+                                 name:'Andy',
+                                 age:25
+                                },
+                                
+                friends_Array: [
+                                {name:'Andy',age:25},
+                                {name:'Brian',age:18},
+                                {name:'Carl',age:37}
+                               ],
+
+                months: ['January','February','March','April','May'],
+                years: [2018,2019,2020,2021,2022],
+            },
+        });
+    </script>
+</body>
+</html>
+

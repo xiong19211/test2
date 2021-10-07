@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="https://unpkg.com/vue@2.6.12"></script>
+
+<style>
+    .active{
+        color: green;
+    }
+    .text-danger{
+        font-size: 100px;
+    }
+</style>
+</head>
+<body>
+    <!-- attribute可用 v-bind: 綁定 -->
+    <div id="app">
+        <img src="image/img04.png">
+        <img v-bind:src="imgURL">
+
+        <!-- //動態操作class -->
+        <div class="static"
+        v-bind:class="{ active: isActive, 'text-danger': hasError }">hi</div>
+    </div>
+
+   
+
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {  //變數放這裡!
+                imgURL: 'https://sites.google.com/site/labixiaoxinderenwu/_/rsrc/1461805936676/home/c4.png',
+                isActive: true,
+                hasError: false,
+            },
+            methods: { //函數大部分放這裡!
+                
+            },
+        });
+    </script>
+</body>
+</html>
+

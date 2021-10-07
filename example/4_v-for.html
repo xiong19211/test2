@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="https://unpkg.com/vue@2.6.12"></script>
+</head>
+<body>
+    <div id="app"> <!--HTML DOM template-->
+        //陣列
+        <ul>
+            <li v-for="color in colors">{{color}}</li>
+        </ul>
+
+        //陣列內物件
+        <ol>
+            <li v-for="man in friends">{{man.name}}</li>
+        </ol>
+        
+        <table border="1">
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+            </tr>
+            <tr v-for="man in friends">
+                <td>{{man.name}}</td>
+                <td>{{man.age}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {  //變數放這裡!
+                colors: ['red','orange','yellow','green','blue','indigo','violet'],
+                friends: [{name:'Andy',age:25},{name:'Brian',age:18},{name:'Carl',age:37}],
+            },
+        });
+    </script>
+</body>
+</html>
+

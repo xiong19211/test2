@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <style></style>
+    <script src="https://unpkg.com/vue@2.6.12"></script>
+</head>
+<body>
+<!-- 選擇的值顯示在p標籤內 -->
+
+    <div id="app">
+        <!--使用js  -->
+        <!-- <input type="radio" name="gender" value="male" checked>Male
+        <input type="radio" name="gender" value="female">Female
+        <input type="radio" name="gender" value="others">Others -->
+
+
+        <!-- vue-->
+        <input type="radio" v-model="gender" value="male">Male
+        <input type="radio" v-model="gender" value="female">Female
+        <input type="radio" v-model="gender" value="others">Others
+        
+        <!-- js -->
+        <!-- <p id="checked">顯示區塊</p> -->
+
+        <!-- vue -->
+        <p>{{gender}}</p>
+        <hr>
+
+        
+    </div>
+
+    <!-- js -->
+    <!--<script>
+        window.addEventListener('load',doFirst);
+        function doFirst(){
+            let P = document.getElementById("checked");
+            //使用getElementsByName
+            let rValue = document.getElementsByName("gender"); 
+
+            //使用querySelectorAll
+            // let rValue = document.querySelectorAll("input[name=gender]");
+            // alert(typeof rValue ); //object
+
+            for(let i = 0; i <=rValue.length;i++){
+                if(rValue[i].checked==true){
+                P.innerText = rValue[i].value;
+                    // alert(rValue[i].value);
+                }
+                //遍歷監聽
+                rValue[i].addEventListener("click",function(){
+                    P.innerText = this.value;
+               })
+            }
+        }
+    </script>-->
+
+    <!-- vue -->
+    <script>      
+        new Vue({
+            el: '#app', //el:document.getElementById('app');
+            data:{ //變數放這裡!
+                message: '',
+                gender: 'male',
+            },
+            methods: {//函數大部分放這裡
+               
+            },
+            computed: {//函數也可以放這裡,但放這裡的函數，不可以傳參數，一定要有傳回值。
+               
+            },
+        });
+    </script>
+</body>
+</html>

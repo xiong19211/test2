@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <style></style>
+    <script src="https://unpkg.com/vue@2.6.12"></script>
+</head>
+<body>
+    <div id="app"> <!--HTML DOM template--> 
+        <input type="file" @change="fileChange">
+        <p>
+            <img :src="image">
+        </p>
+        <p>{{image}}</p>
+        
+    </div>
+
+    <script>      
+
+        new Vue({
+            el: '#app',
+            data:{ 
+               image: '',
+            },
+            methods: {
+                fileChange(e){
+                    // console.log(e);
+                    // console.log(e.target);
+                    // console.log(e.type);
+
+                    let file = e.target.files[0];
+                    // let file = e.target.files.item(0);
+                    // console.log(file);
+
+                    // 參考html5/fileAPI/6_main.js
+                    let readFile = new FileReader();
+                    readFile.readAsDataURL(file);
+                    readFile.addEventListener('load',this.loadImage);
+                },
+                loadImage(e){
+                    this.image = e.target.result;
+                },
+            },
+            computed: {
+               
+            },
+        });
+    </script>
+</body>
+</html>

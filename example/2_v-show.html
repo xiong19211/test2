@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="https://unpkg.com/vue@2.6.12"></script>
+</head>
+<body>
+        <!-- v-show -->
+        <!-- 1. 元素總是會被渲染，操作 css的display屬性，不顯示時dom節點依然存在
+             2. 初始渲染開銷較大，適合頻繁的切換 -->
+
+    <div id="app"> <!--HTML DOM template-->
+        <h1>{{message}}</h1>
+        <input type="text" v-model="message">
+        <h2 v-show="loading">Loading</h2>
+    </div>
+    
+    <script>
+        new Vue({
+            el: '#app',  //el: document.getElementById('app'),
+            data: {  //變數放這裡!
+                message: 'Hello',
+                score: 80,
+                loading: false,
+            },
+        });
+    </script>
+</body>
+</html>
+

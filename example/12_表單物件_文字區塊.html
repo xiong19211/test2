@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <style></style>
+    <script src="https://unpkg.com/vue@2.6.12"></script>
+</head>
+<body>
+    <div id="app"> <!--HTML DOM template-->        
+        <input type="text" :value="message" @keyup="setMessage">
+        <!-- <input type="text" v-model="message"> -->
+        <p>{{message}}</p>
+        <hr>
+
+        <textarea rows="5" cols="22" v-model="message"></textarea>
+        <p style="white-space: pre;font: 13.333px monospace;">{{message}}</p>
+    </div>
+
+    <!-- I use my 
+    computer to
+ surf the internet. -->
+
+    <script>      
+
+        new Vue({
+            el: '#app', //el:document.getElementById('app');
+            data:{ //變數放這裡!
+                message: '',
+            },
+            methods: {//函數大部分放這裡
+                setMessage(e){
+                    this.message = e.target.value;
+                },
+            },
+            computed: {//函數也可以放這裡,但放這裡的函數，不可以傳參數，一定要有傳回值。
+               
+            },
+        });
+    </script>
+</body>
+</html>

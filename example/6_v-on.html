@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="https://unpkg.com/vue@2.6.12"></script>
+</head>
+<body>
+    <!-- v-on : 監聽DOM事件，觸發時執行function ==>v-on:click="methodName"
+    快捷(語法糖) : @click="methodName" -->
+
+    <div id="app">
+        <ol>
+            <!-- <li v-for="man in friends" v-on:click="showName(man.name)">{{man.name}}</li> -->
+            <li v-for="man in friends" @click="showName(man.name)">{{man.name}}</li>
+        </ol>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {  //變數放這裡!
+                friends: [{name:'Andy',age:25},{name:'Brian',age:18},{name:'Carl',age:37}],
+            },
+            methods: { //函數大部分放這裡!
+                // showName: function(){},
+                showName(yourName){
+                    alert(`member: ${yourName}`);
+                },
+            },
+        });
+    </script>
+</body>
+</html>
+

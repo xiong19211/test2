@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <style>
+        ol{
+            padding-left: 20px;
+        }
+        li{
+            list-style: none;
+            font: bold 18px Calibri;
+            background: #abc;
+            padding: 8px;
+            margin: 5px;
+        }
+        li:hover{
+            background: #cba;
+            cursor: pointer;
+        }
+    </style>
+     <script src="https://unpkg.com/vue@2.6.12"></script>
+</head>
+<body>
+    <div id="app"> <!--HTML DOM template-->
+        Your task: <input v-model="newTask" @keyup.enter="addTask">
+        <p>
+            <ol>
+                <li v-for="(task,index) in tasks" @click="removeTask(index)">{{task}}</li>
+            </ol>
+        </p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {  //變數放這裡!
+                tasks: [],
+                newTask: '',
+            },
+            methods: { //函數大部分放這裡!
+                addTask(){
+                    if(this.newTask !=""){
+                        // if($.inArray(物件,物件陣列)){} 查找指定值，并返回它的索引值（如果没有找到，则返回-1）
+                        if($.inArray(this.newTask, this.tasks) == -1){
+                            this.tasks.push(this.newTask);
+                        }else{
+                            alert("資料重複");
+                        };
+                    }else{
+                        alert("請物輸入空值");
+                    }
+                    
+                    this.newTask = '';
+                },
+                removeTask(index){
+                    // 陣列.splice(index);
+                    // 陣列.splice(index, 想要刪除的筆數);
+                    // 陣列.splice(index, 想要刪除的筆數, 100,200,300);
+                    // 陣列.splice(5, 0, 100,200,300);
+                    this.tasks.splice(index,1);
+                },
+            },
+        });
+    </script>
+</body>
+</html>
+

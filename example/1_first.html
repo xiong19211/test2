@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <style>
+        .a{
+            margin: auto;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app"> 
+        <h1>{{message}}</h1>
+        <input type="text" v-model="message">
+    </div>
+
+    <div id="app2">
+        <h1>{{message2}}</h1>
+        <input type="text" v-model="message2">
+    </div>
+
+    <!-- vue2 -->
+    <script src="https://unpkg.com/vue@2.6.12"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {  //變數放這裡!
+                message: 'Hello',
+            },
+        });
+
+        new Vue({
+            el: '#app2',
+            data: {  //變數放這裡!
+                message2: 'Hi',
+            },
+        });
+    </script>
+    <!-- vue3 -->
+    <!-- <script src="https://unpkg.com/vue@3.2.18"></script>
+    <script> 
+        
+        const vm = Vue.createApp({
+            data(){
+                return{
+                    message:"Hello"
+                }
+            }
+        });
+        vm.mount("#app");
+
+        const vm2 = Vue.createApp({
+            data(){
+                return{
+                    message2:"Hi"
+                }
+            }
+        });
+        vm2.mount("#app2");
+    </script> -->
+
+</body>
+</html>
+
